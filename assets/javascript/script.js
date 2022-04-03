@@ -2,17 +2,6 @@ let btnmodal = document.querySelector("#btn__modal");
 let modal = document.querySelector("#add__modal");
 let containerCards = document.querySelector("#container__cards");
 
-// exemplo de dado que sera inserido no dom 
-
-
-{/* <div class="col-md-3 card text-center py-1 shadow mx-1">
-<img src="https://i.gifer.com/AIO6.gif" alt="">
-<p class="text-muted">por: <span class="text-primary">Lauricio de souza</span></p>
-<div class="nav d-flex border align-items-center justify-content-center">
-    <button class="btn-primary m-1"><img src="assets/icons/share.svg" alt=""></button>
-    <button class="btn-primary m-1"><img src="assets/icons/balloon-heart.svg" alt=""></button>
-</div>
-</div> */}
 
 
 btnmodal.addEventListener("click", function(){
@@ -20,13 +9,17 @@ btnmodal.addEventListener("click", function(){
     btnmodal.style.backgroundColor = btnmodal.style.backgroundColor !== "red" ? "red" : "#007bff"
 })
 
+    
+    
+    const localstorageTransaction = JSON.parse(localStorage
+        .getItem("datapic"))
 
-const banco = [
-    {url: 'https://orig00.deviantart.net/62ff/f/2015/313/a/0/training_by_kirokaze-d9g32f4.gif', nome: 'testeq1'},
-    {url: 'https://c.tenor.com/4q1CxYO25e0AAAAC/pixel-art.gif', nome: 'cleber'},
-    {url: 'https://media1.giphy.com/media/5e25aUTZPcI94uMZgv/giphy.gif', nome: 'lauriciio'}
-   
-]
+ let transactions = localStorage
+.getItem("datapic") !== null ? localstorageTransaction : [];
+
+
+
+
 
 const insertItemsDom = (url,nome) =>{
     let newCardGif = document.createElement("div");
@@ -61,9 +54,10 @@ const getDataDom = () => {
 
 const isertInData = (url,nome) =>{
     if(url.trim() !== "" || nome.trim() !== ""){
-          banco.push({url:url, nome:nome})
+        transactions.push({url:url, nome:nome})
         document.querySelector("#input__url").value = ""
         document.querySelector("#input__nome").value = ""
+        updateLocalStorage()
     }else{
         alert("preencha todos os campos !!!")
     }
@@ -75,16 +69,19 @@ const clearBanco = () =>{
         containerCards.removeChild(containerCards.lastChild);
     }
 
+}
 
+const updateLocalStorage = () => {
+    localStorage.setItem("datapic", JSON.stringify(transactions))
 }
 
 
 const insertBanco = () => {
     clearBanco()
-    banco.forEach(dado => insertItemsDom(dado.url,dado.nome))
+    transactions.forEach(dado => insertItemsDom(dado.url,dado.nome))
 }
 
 document.getElementById("input__btn").addEventListener("click", getDataDom)
 
-
+updateLocalStorage()
 insertBanco()
