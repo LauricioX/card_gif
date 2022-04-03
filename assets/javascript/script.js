@@ -35,6 +35,7 @@ const insertItemsDom = (url,nome) =>{
         <div class="nav d-flex border align-items-center justify-content-center">
             <button class="btn-primary m-1"><img src="assets/icons/share.svg" alt=""></button>
             <button class="btn-primary m-1"><img src="assets/icons/balloon-heart.svg" alt=""></button>
+            <button class="btn-primary m-1"><img src="assets/icons/trash-fill.svg" alt=""></button>
         </div>
     ` 
     containerCards.prepend(newCardGif)
@@ -51,10 +52,14 @@ const getDataDom = () => {
 
 }
 
+let id = 0
+
 
 const isertInData = (url,nome) =>{
     if(url.trim() !== "" || nome.trim() !== ""){
-        transactions.push({url:url, nome:nome})
+       
+        id++
+        transactions.push({id:id,url:url, nome:nome})
         document.querySelector("#input__url").value = ""
         document.querySelector("#input__nome").value = ""
         updateLocalStorage()
