@@ -2,6 +2,10 @@ h1 {
   color: #008be1;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 #btn__modal {
   position: absolute;
   top: 20px;
@@ -13,11 +17,15 @@ h1 {
   top: 10px;
   right: 30px;
   display: none;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 3s;
+  transition: 3s;
 }
 
 .show {
   display: block !important;
+  -webkit-transition: 3s;
+  transition: 3s;
+  z-index: 4;
+  background-color: #027dbf;
 }
 /*# sourceMappingURL=style.css.map */
