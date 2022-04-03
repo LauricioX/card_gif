@@ -1,0 +1,23 @@
+h1 {
+  color: #008be1;
+}
+
+#btn__modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#add__modal {
+  position: fixed !important;
+  top: 10px;
+  right: 30px;
+  display: none;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.show {
+  display: block !important;
+}
+/*# sourceMappingURL=style.css.map */
